@@ -1,13 +1,13 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/dpms
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: dpms
+    password: dpms
 
 security:
   jwt:
     issuer: dpms
-    secret: ${JWT_SECRET}
+    secret: "ole si brahim yoyoyooyoyo 20252026@@@@"
     accessTokenMinutes: 60
 
 server:
