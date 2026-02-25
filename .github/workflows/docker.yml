@@ -11,10 +11,6 @@ jobs:
       contents: read
       packages: write
 
-    defaults:
-      run:
-        working-directory: dental-management-system-be
-
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +33,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: dental-management-system-be
+          context: .
           push: true
           tags: |
             ghcr.io/medyasyne/dental-be:latest
