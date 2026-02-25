@@ -3,18 +3,27 @@ name: BE - Docker Build & Push
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v4
+      - name: Debug paths
+        run: |
+          echo "PWD = $(pwd)"
+          ls -la
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
@@ -36,5 +45,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/medyasyne/dental-be:latest
-            ghcr.io/medyasyne/dental-be:${{ github.sha }}
+            ghcr.io/medyasine/dental-be:latest
+            ghcr.io/medyasine/dental-be:${{ github.sha }}
